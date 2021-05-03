@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class TesterForAtmCardDetails {
 
+	// Test case with correct input
 	@Test
 	public void testcase1() {
 		Number num = new Number();
@@ -26,6 +27,7 @@ public class TesterForAtmCardDetails {
 		assertEquals(true, errors.isEmpty());
 	}
 
+	// Test case for wrong input
 	@Test
 	public void testcase2() {
 		Number num = new Number();

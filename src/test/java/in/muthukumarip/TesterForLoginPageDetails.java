@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class TesterForLoginPageDetails {
 
+	// Testcase for correct input
 	@Test
 	public void testCase1() {
 		long mobileNumber = 9767456764L;
@@ -22,6 +23,7 @@ public class TesterForLoginPageDetails {
 		assertEquals(true, errors.isEmpty());
 	}
 
+	// Testcase for incorrect input
 	@Test
 	public void testCase2() {
 		long mobileNumber = 9767677764L;

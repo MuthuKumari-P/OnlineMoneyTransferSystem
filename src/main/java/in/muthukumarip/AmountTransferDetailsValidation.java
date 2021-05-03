@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class AmountTransferDetailsValidation {
 	/**
-	 * Check the recipient bank details 
-	 * for amount transfer
+	 * Check the recipient bank details for amount transfer
+	 * 
 	 * @param recipient
 	 * @return
 	 */
 	public static ArrayList<String> validateAmountTransferDetails(RecipientDetails recipient) {
-		ArrayList<String> errors = new ArrayList<String>(); //Create a Array List for storing errors.
+		ArrayList<String> errors = new ArrayList<String>(); // Create a Array List for storing errors.
 		boolean validName = CustomerBankDetailValidation.nameValidation(recipient.name);
 		if (validName == false) {
 			errors.add("Name is Invalid");
@@ -33,6 +33,6 @@ public class AmountTransferDetailsValidation {
 			errors.add("You Doesn't have an Enough Amount");
 
 		}
-		return errors;
+		return errors;// return list of errors
 	}
 }

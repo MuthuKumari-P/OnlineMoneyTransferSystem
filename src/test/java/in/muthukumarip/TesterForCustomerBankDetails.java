@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 public class TesterForCustomerBankDetails {
-	//static String bankName = "Union Bank of India";
+	// static String bankName = "Union Bank of India";
+
+	// Test case with right input
 	@Test
 	public void testcase1() {
 		UserDetails user1 = new UserDetails();
@@ -18,17 +20,18 @@ public class TesterForCustomerBankDetails {
 		user1.password = 2458;
 		user1.balanceAmount = 2000.0f;
 		String bankName = " Union Bank of India ";
-		ArrayList<String> errors=CheckCustomerBankDetails.validateCustomerDetails(user1,bankName);
-		if(errors.isEmpty()) {
+		ArrayList<String> errors = CheckCustomerBankDetails.validateCustomerDetails(user1, bankName);
+		if (errors.isEmpty()) {
 			System.out.println("Customer bank details are valid");
 			OperationsOnCustomerDetails.addCustomerDetails(user1);
 			OperationsOnCustomerDetails.displayCustomerDetails();
-		}
-		else { 
+		} else {
 			System.out.println("Errors\n" + errors);
 		}
-		assertEquals(true,errors.isEmpty());
+		assertEquals(true, errors.isEmpty());
 	}
+
+	// Test case with wrong input
 	@Test
 	public void testcase2() {
 		UserDetails user1 = new UserDetails();
@@ -39,18 +42,15 @@ public class TesterForCustomerBankDetails {
 		user1.password = 248;
 		user1.balanceAmount = 2000.0f;
 		String bankName = "       Union Bank of India      ";
-		ArrayList<String> errors=CheckCustomerBankDetails.validateCustomerDetails(user1,bankName);
-		if(errors.isEmpty()) {
+		ArrayList<String> errors = CheckCustomerBankDetails.validateCustomerDetails(user1, bankName);
+		if (errors.isEmpty()) {
 			System.out.println("Customer bank details are valid");
 			OperationsOnCustomerDetails.addCustomerDetails(user1);
 			OperationsOnCustomerDetails.displayCustomerDetails();
-		}
-		else { 
+		} else {
 			System.out.println("Errors\n" + errors);
 		}
-		assertEquals(false,errors.isEmpty());
+		assertEquals(false, errors.isEmpty());
 
 	}
 }
-
-
