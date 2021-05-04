@@ -31,12 +31,34 @@ public class CheckCustomerBankDetails {
 		if (ifscCodeValid == false) {
 			errors.add("IFSC code is Invalid");
 		}
-		boolean passWordValid = CustomerBankDetailValidation.passWordValidation(user1.password);
-		if (passWordValid == false) {
+		boolean passwordValid = CustomerBankDetailValidation.passwordValidation(user1.password);
+		if (passwordValid == false) {
 			errors.add("password is Invalid");
 
 		}
 		return errors;// returns the errors list.
+	}
+
+	/**
+	 * This method check the bank name and user details are valid.
+	 * 
+	 * @param user
+	 * @param bankName
+	 * @return
+	 */
+	public static boolean checkCustomerDetail(UserDetails user, String bankName) {
+		ArrayList<String> errors = validateCustomerDetails(user, bankName);
+		if (errors.isEmpty()) {
+			System.out.println("Customer bank details are valid");
+			OperationsOnCustomerDetails.addCustomerDetails(user);
+			OperationsOnCustomerDetails.displayCustomerDetails();
+		} else {
+			System.out.println("Customer bank details are invalid\nErrors\n" + errors);
+		}
+		/**
+		 * if no errors found isEmpty() method returns true otherwise it returns false.
+		 */
+		return errors.isEmpty();
 	}
 
 }
