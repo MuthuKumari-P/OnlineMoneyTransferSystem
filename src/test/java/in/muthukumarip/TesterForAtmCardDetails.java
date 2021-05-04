@@ -2,48 +2,28 @@ package in.muthukumarip;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 public class TesterForAtmCardDetails {
 
 	// Test case with correct input
 	@Test
-	public void testcase1() {
-		Number num = new Number();
-		num.atmCardNumber = 8765456745676543L;
-		num.atmPinNumber = 7678;
-		// AtmCardDetails card=new AtmCardDetails();
-
-		ArrayList<String> errors = CheckAtmCardDetails.validateAtmCardDetails(num);
-		if (errors.isEmpty()) {
-			System.out.println("ATM Card details are valid");
-			ValidateAtmCardDetails.addAtmCardDetails(num);
-			ValidateAtmCardDetails.displayAtmCardDetails();
-		} else {
-			System.out.println("Errors\n" + errors);
-		}
-		assertEquals(true, errors.isEmpty());
+	public void testCase1() {
+		Number num1 = new Number();
+		num1.atmCardNumber = 8765456745676543L;
+		num1.atmPinNumber = 7678;
+		boolean valid=CheckAtmCardDetails.checkAtmCardDetails(num1);
+		assertEquals(true, valid);
 	}
 
 	// Test case for wrong input
 	@Test
-	public void testcase2() {
-		Number num = new Number();
-		num.atmCardNumber = 87654545676543L;
-		num.atmPinNumber = 768;
-		// AtmCardDetails card=new AtmCardDetails();
-
-		ArrayList<String> errors = CheckAtmCardDetails.validateAtmCardDetails(num);
-		if (errors.isEmpty()) {
-			System.out.println("ATM Card details are valid");
-			ValidateAtmCardDetails.addAtmCardDetails(num);
-			ValidateAtmCardDetails.displayAtmCardDetails();
-		} else {
-			System.out.println("Errors\n" + errors);
-		}
-		assertEquals(false, errors.isEmpty());
+	public void testCase2() {
+		Number num2 = new Number();
+		num2.atmCardNumber = 87654545676543L;
+		num2.atmPinNumber = 768;
+		boolean valid=CheckAtmCardDetails.checkAtmCardDetails(num2);
+		assertEquals(false, valid);
 	}
 
 }
