@@ -3,7 +3,8 @@ package in.muthukumarip;
 import java.util.ArrayList;
 
 public class ValidateAtmCardDetails {
-	//This method validate the ATM card Number
+
+	// This method validate the ATM card Number
 	public static boolean validateAtmCardNumber(long atmCardNumber) {
 		boolean inValid = true;
 		String atmCardNumberString = String.valueOf(atmCardNumber);
@@ -16,7 +17,7 @@ public class ValidateAtmCardDetails {
 		return inValid;
 	}
 
-//This method validate the ATM card pin number
+	//This method validate the ATM card pin number
 	public static boolean validateAtmPinNumber(int atmPinNumber) {
 		boolean inValid = true;
 		String atmPinNumberString = String.valueOf(atmPinNumber);
@@ -32,10 +33,9 @@ public class ValidateAtmCardDetails {
 	// This method used to add the ATM card details
 	public static void addAtmCardDetails(Number num) {
 		atmCard.add(num);
-
 	}
 
-	//This method display the ATM card Details
+	// This method display the ATM card Details
 	public static void displayAtmCardDetails() {
 		for (Number atmCardDetails : atmCard) {
 			System.out.println(atmCardDetails);
