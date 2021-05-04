@@ -2,6 +2,10 @@ package in.muthukumarip;
 
 import java.util.ArrayList;
 
+import java.util.regex.Matcher;
+
+import java.util.regex.Pattern;
+
 public class CustomerBankDetailValidation {
 	/**
 	 * This class validate all the customer bank details.
@@ -9,7 +13,7 @@ public class CustomerBankDetailValidation {
 	 * @param bankName
 	 * @return
 	 */
-	public static int bankNameCaseValidation(String bankName) {
+	public static int convertBankNameCases(String bankName) {
 		/**
 		 * This method used to ignore the cases of bank name and return the integer
 		 * value of all the bank name
@@ -70,7 +74,7 @@ public class CustomerBankDetailValidation {
 		// convert long to String
 		String accountNumberString = String.valueOf(accountNumber);
 		boolean isValid = false;
-		int bankNameValue = bankNameCaseValidation(bankName);
+		int bankNameValue = convertBankNameCases(bankName);
 		/**
 		 * Validate the account number with the bank name using switch case
 		 */
@@ -129,7 +133,7 @@ public class CustomerBankDetailValidation {
 	public static boolean ifscCodeValidation(String ifscCode, String bankName) {
 
 		boolean isValid = false;
-		int bankNameValue = bankNameCaseValidation(bankName);
+		int bankNameValue = convertBankNameCases(bankName);
 		switch (bankNameValue) {
 		case 0: {
 			isValid = false;
@@ -159,14 +163,18 @@ public class CustomerBankDetailValidation {
 		return isValid;
 	}
 
-	public static boolean passWordValidation(int passWord) {
-		String passWordString = String.valueOf(passWord);
-		boolean isValid = false;
-		if (passWordString.length() == 4) {
-			isValid = true;
-		}
-		return isValid;
+	public static boolean passwordValidation(String passWord) {
+		// String passWordString = String.valueOf(passWord);
+		String conditions = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,20}";
+		boolean validPassword = isValidPassword(passWord, conditions);
+		return validPassword;
 
+	}
+
+	public static boolean isValidPassword(String password, String conditions) {
+		Pattern pattern = Pattern.compile(conditions);
+		Matcher matcher = pattern.matcher(password);
+		return matcher.matches();
 	}
 
 	/**
@@ -182,7 +190,7 @@ public class CustomerBankDetailValidation {
 		bank.add("Union Bank of India");
 		boolean isValid = false;
 		String trimBankName = bankName.trim();
-		//System.out.println(trimBankName);
+		// System.out.println(trimBankName);
 		boolean exists = bank.contains(trimBankName);
 		if (exists) {
 			isValid = true;
@@ -190,7 +198,7 @@ public class CustomerBankDetailValidation {
 		return isValid;
 	}
 
-	// This method used to check the balance amount with withdraw amount
+	// This method used to check the balance amount with transfer amount
 	public static boolean checkAmount(float amount) {
 		float balanceAmount = 2000.0f;
 		boolean isValid = true;
@@ -199,4 +207,28 @@ public class CustomerBankDetailValidation {
 		}
 		return isValid;
 	}
+
+	/**
+	 * This method used to validate the name of the customer
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public static boolean checkBankName(String name) {
+		boolean isValid = nameValidation(name);
+		if (isValid) {
+			// add bank name to the Hash Set
+			OperationsOnBankList.addBankList(name);
+			// Display the bank list
+			OperationsOnBankList.displayBankList();
+			int noOfBanks = OperationsOnBankList.getNoOfBanks();
+			// Display the count of bank list
+			System.out.println(noOfBanks);
+
+		} else {
+			System.out.println("Enter Valid Bank Name");
+		}
+		return isValid;
+	}
+
 }
