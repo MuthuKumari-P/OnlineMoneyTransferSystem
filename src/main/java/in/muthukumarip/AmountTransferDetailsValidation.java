@@ -3,14 +3,29 @@ package in.muthukumarip;
 import java.util.ArrayList;
 
 public class AmountTransferDetailsValidation {
+	
 	/**
 	 * Check the recipient bank details for amount transfer
-	 * 
 	 * @param recipient
 	 * @return
 	 */
+	public static boolean validate(RecipientDetails recipient) {
+		boolean isValid = false;
+		ArrayList<String> errors = validateAmountTransferDetails(recipient);
+		if (errors.isEmpty()) {
+			System.out.println("Recipient Details are valid");
+			System.out.println("You have the Enough amount in your bank account");
+			isValid = true;
+		} else {
+			System.out.println("Errors\n" + errors);
+			isValid = false;
+		}
+		return isValid;
+	}
+
 	public static ArrayList<String> validateAmountTransferDetails(RecipientDetails recipient) {
-		ArrayList<String> errors = new ArrayList<String>(); // Create a Array List for storing errors.
+		 // Create a Array List for storing errors.
+		ArrayList<String> errors = new ArrayList<String>();
 		boolean validName = CustomerBankDetailValidation.nameValidation(recipient.name);
 		if (validName == false) {
 			errors.add("Name is Invalid");
@@ -33,6 +48,6 @@ public class AmountTransferDetailsValidation {
 			errors.add("You Doesn't have an Enough Amount");
 
 		}
-		return errors;// return list of errors
+		return errors;// return the list of errors
 	}
 }
