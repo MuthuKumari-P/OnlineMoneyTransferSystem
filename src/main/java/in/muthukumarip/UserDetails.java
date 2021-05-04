@@ -11,7 +11,7 @@ public class UserDetails {
 	public long mobileNumber;
 	public long accountNumber;
 	public String ifscCode;
-	public int password;
+	public String password;
 	public float balanceAmount;
 
 	@Override
